@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>byGPA</title>
+</head>
+
+<body>
+    <h1>Removing All Applicants</h1>
+
+    <form action="/adminRemove" method="post">
+        <input type="submit" id="remove" value="Remove all applicants" onclick="confirmSubmission()">
+    </form>
+    <hr>
+    <a href="http://localhost:<%= portNumber %>">HOME</a>
+</body>
+
+<script>
+    function confirmSubmission() {
+        // Get the port number from the URL
+        var portNumber = window.location.port;
+
+        // Create the confirmation message
+        var confirmationMessage = "Are you sure you want to remove all applications?\n";
+
+        // Display the confirmation dialog box
+        var confirmed = confirm(confirmationMessage);
+
+        // If the user confirms, submit the form
+        if (confirmed) {
+            document.getElementById("applicationForm").submit();
+        } else {
+            // If the user cancels, do nothing
+        }
+    }
+</script>

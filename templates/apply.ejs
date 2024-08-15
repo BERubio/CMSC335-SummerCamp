@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Application</title>
+</head>
+
+<style>
+form{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#info{
+    width: 650px;
+    height: 100px;
+}
+</style>
+
+<body>
+    <h1>Application</h1>
+
+    <form id="form1" action="/apply" method="post">
+        <b>Name: </b> <input type="text" name="name" id="name">
+        <b>Email Address:</b> <input type="email" name="email" id="email">
+        <br>
+        <br>
+        <b>GPA: </b> <input type="text" name="gpa" id="gpa">
+        <br>
+        <br>
+        <b>Background Information: </b> <br> <input type="text" name="info" id="info">
+        <br>
+        <br>
+        <input type="reset" id="clear"> 
+        <input type="submit" id="submit" value="Submit Application" onclick="confirmSubmission()">
+    </form>
+    
+    <hr>
+    <a href="http://localhost:<%= portNumber %>">HOME</a>
+</body>
+
+<script>
+    function confirmSubmission() {
+        // Get the port number from the URL
+        var portNumber = window.location.port;
+
+        // Create the confirmation message
+        var confirmationMessage = "Are you sure you want to submit your application?\n";
+        confirmationMessage += "You will not be able to change your information once submitted.";
+
+        // Display the confirmation dialog box
+        var confirmed = confirm(confirmationMessage);
+
+        // If the user confirms, submit the form
+        if (confirmed) {
+            document.getElementById("applicationForm").submit();
+        } else {
+            // If the user cancels, do nothing
+        }
+    }
+</script>
